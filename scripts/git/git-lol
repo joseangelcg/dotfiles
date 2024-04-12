@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -e
+
+
+#fetch for first time. Discard all output
+git fetch --all > /dev/null 2>&1
+
+#fetch again to obtain hash of not updated remotes
+HASH_REMOTE=$(git fetch --all -v 2>&1 >/dev/null | sha256sum.exe | cut -f1 -d' ');
+
+clear;
+git --no-pager log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' -$1;
+
+while true;
+    do  
+        #fetch remote
+        HASH_REMOTE_LATEST=$(git fetch --all -v 2>&1 >/dev/null | sha256sum.exe | cut -f1 -d' ')
+
+        if [[ "$HASH_REMOTE_LATEST" != "$HASH_REMOTE" ]]; then
+
+            #update screen
+            clear;
+            git --no-pager log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' -$1;
+
+            #re-update hash after update
+            HASH_REMOTE=$(git fetch --all -v 2>&1 >/dev/null | sha256sum.exe | cut -f1 -d' ');
+        fi
+        #wait for next check
+        sleep 2;
+done

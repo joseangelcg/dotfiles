@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Only output color if the command isn't being piped.
+if [ -t 1 ]; then
+  COLOR="always"
+else
+  COLOR="auto"
+fi
+
+git branch \
+    --color="$COLOR" \
+    --sort=-authordate \
+    --format="%(color:white)%(color:bold)%(refname:short)%(color:reset) ; %(color:red)%(authorname)%(color:reset) ; %(color:green)%(authordate:short) %(color:reset)-> %(color:yellow)%(authordate:relative)" \
+    "$@" \
+    | head -n 30 | column -s ";" -t -o "||"

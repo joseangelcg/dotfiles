@@ -42,5 +42,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " automated commands using NERDTree "
 "autocmd VimEnter * NERDTree "
 autocmd BufWinEnter * NERDTreeMirror
+let NERDTreeShowHidden=1
 
 let &pythonthreedll = 'C:\Tool\Common\Python39\python39.dll'
