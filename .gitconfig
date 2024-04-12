@@ -1,0 +1,79 @@
+[user]
+	name = Jose Contreras (uid39031)
+	email = jose.contreras@continental-corporation.com
+[includeIf "gitdir:~/GIT_Personal/"]
+    path = ~/.gitconfig_personal
+[core]
+	editor = vim
+	autocrlf = input
+	excludesfile = ~/.gitignore
+    longpaths = true
+
+[diff]
+	tool = vimdiff
+[difftool]
+    prompt = false
+[difftool "bc"]
+	cmd = \"C:\\Program Files (x86)\\Beyond Compare 3\\BComp.exe\" -solo \"$LOCAL\" \"$REMOTE\"
+
+#[difftool "mybc4"]
+#	cmd = '/c/Program Files (x86)/Beyond Compare 3/BComp.exe' \"$(cygpath -w $LOCAL)\" \"$(cygpath -w $REMOTE)\"
+
+[merge]
+    tool = bc#vimdiff
+    conflictstyle = diff3
+[mergetool]
+    prompt = false
+
+[mergetool "bc"]
+	cmd = \"C:/Program Files (x86)/Beyond Compare 3/BComp.exe\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+#[mergetool "mybc4"]
+#	cmd = '/c/Program Files (x86)/Beyond Compare 3/BComp.exe' \"$(cygpath -w $LOCAL)\" \"$(cygpath -w $REMOTE)\" \"$(cygpath -w $BASE)\" \"$(cygpath -w $MERGED)\"
+
+[color "status"]
+        added = green
+        changed = yellow
+        untracked = red 
+[color "branch"]
+        current = green
+        local = yellow
+        remote = red
+[alias]
+        a=add
+        
+        pl=pull
+
+        ps=push
+        psu="push -u"
+        psuo="push -u origin"
+
+        co=checkout
+        cob="checkout -b"
+        
+        cm=commit
+        
+        st=status
+
+        s=show
+
+        br=branch
+        bra="!$HOME/scripts/git/git-branches --all"
+        
+        df=diff
+        
+        d=difftool
+        dbc="difftool --tool=bc --dir-diff"
+        
+        f="fetch -p"
+        fa="fetch -p --all"
+
+         lg="log --pretty=format:'%Cred[%h] %C(magenta)%H %C(cyan)%d %n%w(100,10,10)%C(bold blue)[%an]%Creset %C(bold green)(%cs)%Creset->%Cgreen(%cr)%n%C(yellow)%s %n%n%w(100,10,10)%b%n' --graph"
+        lag="log --pretty=format:'%Cred[%h] %C(magenta)%H %C(cyan)%d %n%w(100,10,10)%C(bold blue)[%an]%Creset %C(bold green)(%cs)%Creset->%Cgreen(%cr)%n%C(yellow)%s %n%n%w(100,10,10)%b%n' --graph --branches --remotes --tags --notes"
+        lol="log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --graph"
+        livelog="!$HOME/scripts/git/git-lol"
+
+[commit]
+	template = ~/.git_commit_msg_template
+
+[color]
+	ui = auto
