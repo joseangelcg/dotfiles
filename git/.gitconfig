@@ -1,0 +1,81 @@
+[user]
+	name = Jose Contreras (Potter)
+	email = jose.contreras.godoy@gmail.com
+    signingkey = ~/.ssh/id_ed25519_personal.pub
+
+[core]
+	editor = nvim
+	autocrlf = input
+
+[init]
+    defaultBranch = main
+
+[gpg]
+    format=ssh
+[gpg "ssh"]
+    allowedSignersFile = ~/.ssh/allowed_signers
+
+[commit]
+    gpgsign=true
+    verbose=true
+
+[log]
+    showSignature=false
+
+[diff]
+    algorithm = histogram
+    mnemonicPrefix = true
+
+[column]
+    ui = auto
+[branch]
+    sort = -committerdate
+[tag]
+    sort = version:refname
+
+[fetch]
+    prune = true
+    writeCommitGraph = true
+
+[color "status"]
+        added = green
+        changed = yellow
+        untracked = red
+
+[color "branch"]
+        current = green
+        local = yellow
+        remote = red
+
+[alias]
+        a=add
+
+        pl=pull
+
+        ps=push
+        psu="push -u"
+        psuo="push -u origin"
+
+        co=checkout
+        cob="checkout -b"
+
+        cm=commit
+
+        st=status -s --branch
+
+        s="show --no-show-signature"
+
+        br=branch
+
+        df=diff
+
+        d=difftool
+        dbc="difftool --tool=bc --dir-diff"
+
+        f="fetch"
+        fa="fetch --all"
+
+         lg="log --pretty=format:'%Cred[%h] %C(magenta)%H %C(cyan)%d %n%w(100,10,10)%C(bold blue)[%an]%Creset %C(bold green)(%cs)%Creset->%Cgreen(%cr)%n%C(yellow)%s %n%n%w(100,10,10)%b%n' --graph"
+        lag="log --pretty=format:'%Cred[%h] %C(magenta)%H %C(cyan)%d %n%w(100,10,10)%C(bold blue)[%an]%Creset %C(bold green)(%cs)%Creset->%Cgreen(%cr)%n%C(yellow)%s %n%n%w(100,10,10)%b%n' --graph --branches --remotes --tags --notes"
+        lol="log --pretty=format:'%Cred%h%Creset - %<(50,trunc)%s %C(bold blue)/%cs/%Creset %<(30,trunc)%Cgreen%D' --graph"
+
