@@ -16,6 +16,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
+for_window [app_id="kitty"] opacity 0.9
 # Your preferred application launcher
 set $menu wmenu-run
 # Your preffered browser
@@ -87,8 +88,10 @@ output * bg ~/wallpapers/mountain.jpg fill
     # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # Start your launcher
-    bindsym $mod+d exec $menu
+    # start rofi (a program launcher)
+    bindsym $mod+d exec --no-startup-id rofi -show drun
+    bindsym $mod+space exec --no-startup-id rofi -show combi
+    bindsym $mod+Tab exec --no-startup-id rofi -show window
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -175,7 +178,7 @@ output * bg ~/wallpapers/mountain.jpg fill
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    # bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
