@@ -18,11 +18,24 @@ set $right l
 set $term kitty
 # Your preferred application launcher
 set $menu wmenu-run
+# Your preffered browser
+set $browser brave-browser-stable
+
+### layout options. Consider separate file
+
+#gaps
+smart_borders on
+smart_gaps on
+gaps inner 5
+gaps outer 0
+default_border pixel 3px
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/wallpapers/mountain.jpg fill
+
 #
 # Example configuration:
 #
@@ -68,6 +81,9 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Start a terminal
     bindsym $mod+Return exec $term
 
+    # Start a terminal
+    bindsym $mod+Shift+Return exec $browser
+
     # Kill focused window
     bindsym $mod+Shift+q kill
 
@@ -87,8 +103,6 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    #layout windows witout title
-    default_border none
 #
 # Moving around:
 #
@@ -235,7 +249,9 @@ bindsym $mod+r mode "resize"
 
 include /etc/sway/config.d/*
 
-exec waybar
+bar {
+     swaybar_command waybar
+}
 
 #Exec kwallet to make it work
 exec --no-startup-id /usr/libexec/pam_kwallet_init
