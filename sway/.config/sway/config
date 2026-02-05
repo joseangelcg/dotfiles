@@ -16,7 +16,9 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-for_window [app_id="kitty"] opacity 0.9
+for_window [app_id="kitty"] opacity 0.8
+for_window [app_id="rofi"] opacity 0.8
+corner_radius 10
 # Your preferred application launcher
 set $menu wmenu-run
 # Your preffered browser
@@ -26,7 +28,7 @@ set $browser brave-browser-stable
 
 #gaps
 smart_borders on
-smart_gaps on
+# smart_gaps on
 gaps inner 5
 gaps outer 0
 default_border pixel 3px
@@ -35,7 +37,7 @@ default_border pixel 3px
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg ~/wallpapers/mountain.jpg fill
+output * bg ~/wallpapers/wallpaper fill
 
 #
 # Example configuration:
@@ -48,10 +50,10 @@ output * bg ~/wallpapers/mountain.jpg fill
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -90,8 +92,8 @@ output * bg ~/wallpapers/mountain.jpg fill
 
     # start rofi (a program launcher)
     bindsym $mod+d exec --no-startup-id rofi -show drun
-    bindsym $mod+space exec --no-startup-id rofi -show combi
-    bindsym $mod+Tab exec --no-startup-id rofi -show window
+    bindsym $mod+space exec --no-startup-id rofi -show window
+    bindsym $mod+Tab exec --no-startup-id rofi -show combi
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -218,6 +220,18 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+mode "Logout" {
+
+    bindsym r exec systemctl reboot; mode default
+    bindsym p exec systemctl poweroff; mode default
+    bindsym s exec systemctl suspend; mode default
+    bindsym l exec swaylock -f; mode default
+
+    bindsym Escape mode "default"
+}
+bindsym $mod+Escape mode "Logout"
+
 #
 # Utilities:
 #

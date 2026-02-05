@@ -7,6 +7,7 @@
   "sway/workspaces",
   // "custom/uptime",
   "cpu",
+  "sway/mode",
   "wlr/taskbar"
   ],
 
@@ -21,6 +22,11 @@
     "battery",
     "clock#clk2"
   ],
+
+  "sway/mode": {
+      "format": " {}",
+      "max-length": 50
+  },
 
   "sway/workspaces": {
     "format": "{name}: {icon}",

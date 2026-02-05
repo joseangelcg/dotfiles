@@ -19,6 +19,7 @@
 /* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
 #workspaces,
 #custom-uptime,
+#mode,
 #cpu,
 #taskbar {
   background-color: #1a1b26;
@@ -38,12 +39,10 @@
   margin-right: 5px; /* Spacing after the workspaces module */
 }
 
-#custom-uptime {
-  margin-right: 5px; /* Spacing after the uptime module */
-}
-
+#custom-uptime,
+#mode,
 #cpu {
-    margin-right: 5px;
+  margin-right: 5px; /* Spacing after the uptime module */
 }
 
 /* Simple Hover effects for individual left modules - BRIGHTER COLOR */
