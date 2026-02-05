@@ -16,7 +16,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
-for_window [app_id="kitty"] opacity 0.8
+for_window [app_id="kitty"] opacity 0.85
 for_window [app_id="rofi"] opacity 0.8
 corner_radius 10
 # Your preferred application launcher
