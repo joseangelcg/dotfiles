@@ -28,3 +28,6 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 --change buffer in current window
 vim.keymap.set("n", "<leader>bn", "<cmd>bn<cr>")
+
+--open Oil
+vim.keymap.set("n", "<leader>-", "<cmd>Oil --float<cr>")
