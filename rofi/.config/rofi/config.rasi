@@ -1,5 +1,6 @@
 configuration{
     modes: "run,window,combi";
+    combi-modes : "window,drun";
     icon-theme: "Oranchelo";
     show-icons: true;
     terminal: "kitty";

@@ -6,6 +6,14 @@
 [core]
 	editor = nvim
 	autocrlf = input
+    pager = delta
+
+[delta]
+    navigate = true  # use n and N to move between diff sections
+    dark = true      # or light = true, or omit for auto-detection
+
+[interactive]
+    diffFilter = delta --color-only
 
 [init]
     defaultBranch = main
@@ -25,6 +33,9 @@
 [diff]
     algorithm = histogram
     mnemonicPrefix = true
+
+[merge]
+    conflictStyle = zdiff3
 
 [column]
     ui = auto

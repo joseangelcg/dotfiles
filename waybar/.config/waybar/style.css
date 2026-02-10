@@ -1,5 +1,5 @@
-/* --- Global Styles --- */
-* {
+/* --- Global Styles --- */ *
+{
   font-family: 'SF Pro Text', 'Inter', 'Segoe UI, NotoSans Nerd Font', 'Noto Sans Mono', sans-serif;
   font-size: 13px;
   min-height: 0;
@@ -7,6 +7,7 @@
   padding-left: 0px;
   padding-bottom: 0px;
 }
+/* window.eDP-1 * { font-size: 10px; } */
 
 /* --- Waybar Container --- */
 #waybar {
@@ -18,9 +19,9 @@
 
 /* --- Left Modules (Individual, Fully Rounded Blocks - With Horizontal Spacing & Simple Hover) --- */
 #workspaces,
-#custom-uptime,
 #mode,
 #cpu,
+#memory,
 #taskbar {
   background-color: #1a1b26;
   padding: 0.3rem 0.7rem;
@@ -39,14 +40,14 @@
   margin-right: 5px; /* Spacing after the workspaces module */
 }
 
-#custom-uptime,
 #mode,
+#memory,
 #cpu {
-  margin-right: 5px; /* Spacing after the uptime module */
+  margin-right: 5px; /* Spacing after the workspaces */
 }
 
 /* Simple Hover effects for individual left modules - BRIGHTER COLOR */
-#custom-uptime:hover,
+#memory:hover,
 #cpu:hover {
   background-color: rgb(41, 42, 53); /* Brighter highlight */
 }
@@ -111,7 +112,7 @@
 
 #custom-pomodoro {
     background-color: #1a1b26; /* Consistent dark background */
-    padding: 0.3rem 0.7rem; /* Consistent padding with other modules (e.g., cpu, uptime) */
+    padding: 0.3rem 0.7rem; /* Consistent padding with other modules (e.g., cpu) */
     margin: 5px 0px; /* 5px top/bottom margin, 0px left/right (base for individual control) */
     border-radius: 6px; /* Consistent rounded corners with other individual modules */
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Consistent shadow */
@@ -148,6 +149,18 @@
 }
 
 /* --- Right Modules (Single, Seamless Bar ) --- */
+#custom-music {
+  background-color: #1DB954;
+  color: #000000;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 5px;
+  border-radius: 6px;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
 #bluetooth,
 #pulseaudio,
 #backlight,
@@ -187,9 +200,7 @@
   margin-right: 7px;
 }
 
-#custom-uptime {
-  color: #babbf1;
-}
+#memory,
 #cpu {
   color: #c6d0f5;
 }

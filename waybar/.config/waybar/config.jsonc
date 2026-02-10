@@ -5,8 +5,8 @@
   "spacing" : 0,
   "modules-left": [
   "sway/workspaces",
-  // "custom/uptime",
   "cpu",
+  "memory",
   "sway/mode",
   "wlr/taskbar"
   ],
@@ -15,6 +15,7 @@
 
   "modules-right": [
     // "custom/pomodoro",
+    "custom/music",
     "bluetooth",
     "network",
     "pulseaudio",
@@ -29,10 +30,16 @@
   },
 
   "sway/workspaces": {
-    "format": "{name}: {icon}",
+    "format": "{name} {icon}",
     "format-icons": {
       "focused": "",
       "default": ""
+    },
+    "persistent-workspaces":{
+        "1": [],
+        "2": [],
+        "3": [],
+        "4": []
     }
   },
 
@@ -50,16 +57,28 @@
     "tooltip-format-connected":"{device_enumerate}"
   },
 
-  // "custom/music": {
-  //   "format": "  {}",
-  //   "escape": true,
-  //   "interval": 5,
-  //   "tooltip": false,
-  //   "exec": "playerctl metadata --format='{{ artist }} - {{ title }}'",
-  //   "on-click": "playerctl play-pause",
-  //   "max-length": 50
-  // },
-  //
+  "custom/music": {
+    "format": " {}",
+    "escape": true,
+    "interval": 1,
+
+    "return-type": "json",
+    "tooltip": true,
+
+    "exec": "~/.config/waybar/scripts/ncspot-data.sh",
+    "exec-if": "pgrep ncspot",
+
+    "on-click": "playerctl -p ncspot play-pause",
+    "on-click-middle": "pkill ncspot",
+    "on-click-right": "playerctl -p ncspot shuffle Toggle",
+
+    "on-scroll-up": "playerctl -p ncspot next",
+    "on-scroll-down": "playerctl -p ncspot previous",
+
+    "max-length": 50
+  },
+
+
   "clock": {
     "timezone": "America/Mexico_City",
     "tooltip": false,
@@ -101,13 +120,21 @@
     "on-click": "nm-connection-editor"
 
  },
-
-  "cpu": {
-    "interval": 1,
-    "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
-    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
-    "on-click": "kitty -e htop"
-  },
+ "cpu": {
+     "interval": 1,
+     "format": "{icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}",
+     "format-icons": [
+         "<span color='#69ff94'>▁</span>", // green
+         "<span color='#2aa9ff'>▂</span>", // blue
+         "<span color='#f8f8f2'>▃</span>", // white
+         "<span color='#f8f8f2'>▄</span>", // white
+         "<span color='#ffffa5'>▅</span>", // yellow
+         "<span color='#ffffa5'>▆</span>", // yellow
+         "<span color='#ff9977'>▇</span>", // orange
+         "<span color='#dd532e'>█</span>"  // red
+     ],
+     "on-click": "kitty -e htop"
+ },
 
   "wlr/taskbar": {
       "format": "{icon}",
@@ -124,26 +151,17 @@
 
   "memory": {
     "interval": 30,
-    "format": "  {used:0.1f}G/{total:0.1f}G",
-    "tooltip-format": "Memory"
-  },
-
-  "custom/uptime": {
-    "format": "{}",
-    "format-icon": [""],
-    "tooltip": false,
-    "interval": 1600,
-    "exec": "$HOME/.config/waybar/scripts/uptime.sh"
+    "tooltip-format": " {used:0.1f}G/{total:0.1f}G"
   },
 
   "backlight": {
-        "format": "{icon}  {percent}%",
+        "format": "{icon} {percent}%",
         "format-icons": ["","󰃜", "󰃛", "󰃞","󰃝","󰃟","󰃠"],
         "tooltip": false
   },
 
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "",
     "format-icons": {
       "default": ["", "", " "]
@@ -158,8 +176,8 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity}%",
-        "format-full": "{icon}  {capacity}%",
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {time}",
