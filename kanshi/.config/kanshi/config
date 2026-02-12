@@ -1,0 +1,8 @@
+profile lenovo_ideapad_330s {
+    output 'Chimei Innolux Corporation 0x15E6 Unknown' enable
+}
+
+profile lenovo_ideapad_330s_docked {
+    output 'Chimei Innolux Corporation 0x15E6 Unknown' disable
+    output 'LG Electronics LG ULTRAWIDE 0x0000DCE4' enable
+}
