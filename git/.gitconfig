@@ -1,7 +1,7 @@
 [user]
 	name = Jose Contreras (Potter)
 	email = jose.contreras.godoy@gmail.com
-    signingkey = ~/.ssh/id_ed25519_personal.pub
+    signingkey = ~/.ssh/fedora_PCsignkey.pub
 
 [core]
 	editor = nvim
