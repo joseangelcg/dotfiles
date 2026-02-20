@@ -8,7 +8,8 @@
   "cpu",
   "memory",
   "sway/mode",
-  "wlr/taskbar"
+  "wlr/taskbar",
+  "sway/window"
   ],
 
   "modules-center": ["clock"],
@@ -27,6 +28,14 @@
   "sway/mode": {
       "format": " {}",
       "max-length": 50
+  },
+
+  "sway/window": {
+      "format": "{title}",
+      "max-length": 50,
+      "rewrite": {
+          "(.*) - Brave": "🌎 $1"
+      }
   },
 
   "sway/workspaces": {
@@ -145,7 +154,8 @@
       "on-click": "activate",
       "on-click-middle": "close",
       "ignore-list": [
-          "rofi"
+          "rofi",
+          "ncspot"
       ]
   },
 
