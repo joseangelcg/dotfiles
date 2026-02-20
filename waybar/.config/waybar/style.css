@@ -163,6 +163,31 @@
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
+#custom-sys-updates{
+  background-color: #1a1b26;
+  padding: 0.3rem 0.7rem;
+  margin: 5px 5px;
+  border-radius: 6px;
+  box-shadow: none;
+  min-width: 0;
+  border: none;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+#custom-sys-updates.green {
+  background-color: #1a1b26;
+}
+
+#custom-sys-updates.yellow {
+    background-color: #b78a2c;
+    color: #000000;
+}
+
+#custom-sys-updates.red {
+    background-color: #dc2f2f;
+    color: #000000;
+}
+
 #bluetooth,
 #pulseaudio,
 #backlight,

@@ -16,6 +16,7 @@
 
   "modules-right": [
     // "custom/pomodoro",
+    "custom/sys-updates",
     "custom/music",
     "bluetooth",
     "network",
@@ -87,6 +88,16 @@
     "max-length": 50
   },
 
+  "custom/sys-updates":{
+    "format": "  {}",
+    "escape": true,
+    "return-type": "json",
+    "exec": "~/.config/sway/scripts/check_fedora_updates.sh",
+    "interval": 1800,
+    "hide-empty-text": true,
+    // "signal": 1,
+    // "on-click": "~/.config/ml4w/settings/installupdates.sh"
+  },
 
   "clock": {
     "timezone": "America/Mexico_City",
