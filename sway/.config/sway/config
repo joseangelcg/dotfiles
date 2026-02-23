@@ -28,3 +28,6 @@ include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "
 
 ##restart kanshi service
 exec_always systemctl --user restart kanshi.service
+
+#autotiling because of course
+exec autotiling-rs
